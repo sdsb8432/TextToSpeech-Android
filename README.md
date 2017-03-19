@@ -12,7 +12,7 @@ private TextToSpeech textToSpeech;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	textToSpeech = new TextToSpeech(this, this);
+    textToSpeech = new TextToSpeech(this, this);
 }
 ```
 
@@ -21,20 +21,20 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 //음성 재생 상태에 대한 callback을 받을 수 있는 추상 클래스
 private UtteranceProgressListener progressListener = new UtteranceProgressListener() {
-	@Override
-	public void onStart(String utteranceId) { // 음성이 재생되었을 때
+    @Override
+    public void onStart(String utteranceId) { // 음성이 재생되었을 때
             
-	}
+    }
 
-	@Override
-	public void onDone(String utteranceId) { // 제공된 텍스트를 모두 음성으로 재생한 경우
+    @Override
+    public void onDone(String utteranceId) { // 제공된 텍스트를 모두 음성으로 재생한 경우
 
-	}
+    }
 
-	@Override
-	public void onError(String utteranceId) { // ERROR!
+    @Override
+    public void onError(String utteranceId) { // ERROR!
 
-	}
+    }
 };
 
 textToSpeech.setOnUtteranceProgressListener(progressListener);
@@ -47,11 +47,11 @@ textToSpeech.setOnUtteranceProgressListener(progressListener);
 ```
 //음성 관련 초기화 상태에 대한 callback을 받을 수 있는 인터페이스
 private TextToSpeech.OnInitListener initListener = new TextToSpeech.OnInitListener() {
-	@Override
-	public void onInit(int status) {
-		if(status != TextToSpeech.ERROR)
-			textToSpeech.setLanguage(Locale.KOREAN); // 한글로 설정
-	}
+    @Override
+    public void onInit(int status) {
+        if(status != TextToSpeech.ERROR)
+            textToSpeech.setLanguage(Locale.KOREAN); // 한글로 설정
+    }
 };
 ```
 
@@ -69,14 +69,14 @@ private TextToSpeech.OnInitListener initListener = new TextToSpeech.OnInitListen
 String text = editText.getText.toString();
 
 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-	String myUtteranceID = "myUtteranceID";
-	textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, myUtteranceID);
-	}
+    String myUtteranceID = "myUtteranceID";
+    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, myUtteranceID);
+}
 else {
-	HashMap<String, String> hashMap = new HashMap<>();
-	hashMap.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "myUtteranceID");
-	textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, hashMap);
-	}
+    HashMap<String, String> hashMap = new HashMap<>();
+    hashMap.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "myUtteranceID");
+    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, hashMap);
+}
 ```
 
 #### 2. stop
@@ -93,9 +93,9 @@ ex. 아래와 같이 Activity일 경우 생명주기에 맞춰 `shutDown()`을 �
 ```
 @Override
 protected void onDestroy() {
-	if(textToSpeech != null)
-		textToSpeech.shutDown();
-	super.onDestroy();
+    if(textToSpeech != null)
+        textToSpeech.shutDown();
+    super.onDestroy();
 }
 ```
 
