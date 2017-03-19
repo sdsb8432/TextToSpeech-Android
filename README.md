@@ -109,3 +109,6 @@ protected void onDestroy() {
 이 후 목소리와 재생 속도에 관련된 부분을 프로젝트에 추가할 예정이다.
 
 
+## 3. 스크린샷
+
+<img src="./screenShots/capture01.png" width="40%">
