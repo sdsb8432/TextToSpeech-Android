@@ -7,12 +7,16 @@
 
 ### 1. 클래스 선언
 
+제일 기본이 되는 `TextToSpeech(Context context, TextToSpeech.OnInitListener listener)` 생성자이다. TTS engine을 설정할 수있는 생성자가 있으나 생략하기로 한다.
+
+initListener의 경우는 아래에서 설명할 것이다.
+
 ```
 private TextToSpeech textToSpeech;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-    textToSpeech = new TextToSpeech(this, this);
+    textToSpeech = new TextToSpeech(this, initListener);
 }
 ```
 
