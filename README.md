@@ -57,7 +57,7 @@ private TextToSpeech.OnInitListener initListener = new TextToSpeech.OnInitListen
 
 ### 3. start & stop & shutdown
 
-####1. start
+#### 1. start
 
 
 설명하기 앞서 'utteranceID'는 단어 그대로 현재 재생중인 음성에 대한 ID값을 나타낸다.
@@ -79,12 +79,12 @@ else {
 	}
 ```
 
-####2. stop
+#### 2. stop
 
 
 현재 재생중인 음성에 대한 정지는 간단하게 `textToSpeech.stop()`와 같은 메소드를 사용하면 된다.
 
-####3. shutdown
+#### 3. shutdown
 
 Speech Engine을 통해 초기화된 TextToSpeech 인스턴트는 꼭 `textToSpeech.shutDown()`을 통해 완전히 종료시켜 주어야 한다. 아니면 SeviceConnection...어쩌구저쩌구하는 Exception이 발생된다.
 
@@ -99,7 +99,7 @@ protected void onDestroy() {
 }
 ```
 
-##2. 프로젝트
+## 2. 프로젝트
 
 해당 프로젝트는 TTS Class를 생성하여 조금 더 사용하기 편하도록 만들어두었다.
 이 후 목소리와 재생 속도에 관련된 부분을 프로젝트에 추가할 예정이다.
