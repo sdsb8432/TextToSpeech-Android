@@ -1,13 +1,51 @@
 package com.sdsb8432.texttospeech;
 
-import android.support.v7.app.AppCompatActivity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.sdsb8432.texttospeech.databinding.ActivityMainBinding;
+
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private ActivityMainBinding mainBinding;
+
+
+
+    private TTS tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        tts = new TTS(this, Locale.KOREAN);
+
+        mainBinding.buttonTextToSpeech.setOnClickListener(this);
+        mainBinding.editText.setText("안녕하세요. 저는 손성빈입니다. 반갑습니다.");
+    }
+
+    @Override
+    public void onClick(View v) {
+        tts.speak(mainBinding.editText.getText().toString());
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        if(tts != null && tts.isSpeaking()) {
+            tts.stop();
+        }
+
+        if(tts != null) {
+            tts.shutdown();
+        }
+
+        tts = null;
+
+        super.onDestroy();
     }
 }
