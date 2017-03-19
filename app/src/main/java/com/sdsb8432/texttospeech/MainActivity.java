@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tts = new TTS(this, Locale.KOREAN);
 
         mainBinding.buttonTextToSpeech.setOnClickListener(this);
-        mainBinding.editText.setText("안녕하세요. 저는 손성빈입니다. 반갑습니다.");
     }
 
     @Override
